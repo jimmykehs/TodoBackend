@@ -40,6 +40,9 @@ apiRouter.use((req, res, next) => {
   }
 });
 
+apiRouter.get("/", (req, res) => {
+  res.send({ message: "Hey There!" });
+});
 apiRouter.use("/users", usersRouter);
 apiRouter.use("/todos", todosRouter);
 

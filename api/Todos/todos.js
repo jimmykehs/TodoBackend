@@ -15,4 +15,12 @@ todosRouter.post("/create", requireUser, async (req, res, next) => {
   }
 });
 
+todosRouter.get("/", requireUser, async (req, res, next) => {
+  try {
+    const todos = await getTodos(req.user);
+    res.send(todos);
+  } catch (error) {
+    next(error);
+  }
+});
 module.exports = todosRouter;

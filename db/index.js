@@ -58,4 +58,21 @@ const createTodo = async ({ id, title, body }) => {
   }
 };
 
-module.exports = { client, createUser, getUserbyUsername, createTodo };
+const getTodos = async ({ id }) => {
+  const { rows } = await client.query(
+    `
+    SELECT * FROM todos
+    WHERE "creatorID" = ($1);
+  `,
+    [id]
+  );
+  return rows;
+};
+
+module.exports = {
+  client,
+  createUser,
+  getUserbyUsername,
+  createTodo,
+  getTodos,
+};

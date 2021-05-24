@@ -1,7 +1,7 @@
 const express = require("express");
 const todosRouter = express.Router();
 const requireUser = require("../utils/utils");
-const { createTodo } = require("../../db/index");
+const { createTodo, getTodos } = require("../../db/index");
 
 todosRouter.post("/create", requireUser, async (req, res, next) => {
   try {
